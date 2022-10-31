@@ -1,4 +1,10 @@
 from sklearn.metrics import mean_absolute_error
+import utils as ut
+import numpy as np
+import cvxpy as cp
+
+
+ut.prepare_data_gaussian()["trainX"]
 
 class MyRegressor:
     def __init__(self, alpha):
@@ -6,6 +12,11 @@ class MyRegressor:
         self.bias = None
         self.training_cost = 0   # N * N
         self.alpha = alpha
+        self.iternum = 0
+        self.learningrate = lr
+
+
+
         
     def select_features(self):
         ''' Task 1-3
@@ -29,9 +40,25 @@ class MyRegressor:
     
     
     def train(self, trainX, trainY):
-        ''' Task 1-2
-            Todo: '''
+        ''' 
+        Task 1-2
+        input:
+        trainX
+        trainY
+        self.alpha
+
+        output:
+        self.weight 
+        self.bias 
+        '''
+
+        y = np.zeros(len(trainY))
         
+        objective = cp.Minimize(1/len(trainY)+self.alpha*cp.norm1(self.weight))
+
+        constraints = []
+        prob = cp.Problem(objective, constraints)
+
         return train_error
     
     
