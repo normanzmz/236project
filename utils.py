@@ -40,11 +40,13 @@ def prepare_data_gaussian():
 
     return data
 
+    
+
 def prepare_data_news():
     # https://archive.ics.uci.edu/ml/datasets/online+news+popularity
     data = dict()
     
-    filename = 'OnlineNewsPopularity/OnlineNewsPopularity.csv'
+    filename = '/home/mingzhang/236_project/236project/OnlineNewsPopularity/OnlineNewsPopularity.csv'
     
     # read the data
     allfeatnames = []
